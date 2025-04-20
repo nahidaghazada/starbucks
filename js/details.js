@@ -2,6 +2,16 @@ const detailsCat = document.getElementById('detailsCat')
 const detailsUrl = new URLSearchParams(window.location.search)
 const number = detailsUrl.get("number")
 const detName = detailsUrl.get("name")
+const hideSvg = document.getElementById('hideSvg')
+
+let load = true
+function loading() {
+    if(!load) {
+        hideSvg.style.display = 'none'
+        showDetails()
+    }
+}
+loading()
 
 let DATADETAILS = []
 function checkData() {
@@ -10,7 +20,8 @@ function checkData() {
         .then(info => {
             console.log(info);
             DATADETAILS = info;
-            showDetails();
+            load = false
+            loading();
         })
         .catch(error => {
             console.error("Məlumat yüklənərkən səhv baş verdi: ", error);
