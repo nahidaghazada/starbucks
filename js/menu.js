@@ -1,7 +1,7 @@
 let DATA
 
 function checkData() {
-    fetch("http://localhost:3000/menus")
+    fetch("https://starbucks-data-phi.vercel.app/menus")
         .then(res => res.json())
         .then(info => {
             DATA = info
